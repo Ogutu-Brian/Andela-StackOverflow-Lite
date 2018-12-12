@@ -14,3 +14,5 @@ StackOverflow-Lite is a platform where users can ask questions and provide answe
 ## Acknowledgements
 * Hat tip to w3schools for the guide on html,css and Javascript
 * Inspiration by Andela workshop session
+* Thanks to **Abraham Kamau** for reviews - [Abraham](https://github.com/a-braham)
+* Hat tip to **Munira Omar** for help with git work flow - [Munira](https://github.com/munniomer)
