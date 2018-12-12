@@ -14,16 +14,20 @@
         <a href="index.html" class="title">STackoverflow-Lite</a>
         <a href="index.html" class="right">LOGOUT</a>
     </nav>
-    <div class="content form-container">
-        <form action="">
-            <label for="ans" class="input-label">Subject</label><br>
-            <label for="ans" class="input-label" style="color:yellow">Software Engineering</label><br><br>
-            <label for="ans" class="input-label">Question</label><br>
-            <label for="ans" class="input-label" style="color:yellow;">What is a detailed definition of Software Engineering?</label><br><br>
-            <label for="ans" class="input-label">Answer</label><br>
-            <textarea name="" id="" form="" cols="30" rows="10" class="input-field" style="border-radius:1em"></textarea><br><br>
+    <content class="content form-container" style="border-style:none;text-align:left;">
+        <form action="" id="question-form">
+            <label for="subj" class="input-label">Subject</label><br>
+            <label for="subj" class="input-label" style="color:yellow">Software Engineering</label><br>
+            <br>
+            <label for="question" class="input-label">Question</label><br>
+            <label for="subj" class="input-label" style="color:yellow">What exacly is software enginneering?</label><br>
+            <br>
+            <textarea name="question" style="height: 10em;width: 100%;border-radius: 1em;" form="question-form" id="question" cols="100" rows="10">
+            </textarea><br><br>
+            <!-- <input type="text" style="height:10em;width: 100%"><br><br> -->
             <input type="button" value="submit" class="button" style="width:100%">
         </form>
+    </content>
     </div>
     <footer>
         <p>&copy;stackoverflow-lite 2018</p>
