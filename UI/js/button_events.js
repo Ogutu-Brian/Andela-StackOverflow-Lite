@@ -6,3 +6,6 @@ function deleteEvent(quest_id,btn_id) {
 function logInbtnBtnHandler(){
     window.location.href ="questions.html";
 }
+function makeFavourite(ans_id){
+    document.getElementById(ans_id);
+}
