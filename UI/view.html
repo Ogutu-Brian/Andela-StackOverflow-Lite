@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/style.css">
+    <script src="js/button_events.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Stack|View</title>
 </head>
 
@@ -18,28 +20,38 @@
     <div class="content form-container view">
         <label for="subj" class="input-label">Question</label><br>
         <label for="subbj" class="input-label" style="color:yellow;">What is Software Engineering?</label><br><br>
+
         <label for="quest" class="input-label">Answers</label><br>
-        <label for="quest" style="color:yellow" class="input-label">I think I don't know but I have an idea</label><br><br>
+        <!-- <i id="a" class="fa fa-star" aria-hidden="true"></i> -->
+        <label id="a" for="quest" style="color:yellow" class="input-label" aria-hidden="true">I think I don't know but
+            I have an idea</label><br><br>
         <button class="button" style="float:left" onclick="window.location.href='answer.html'">Answer</button>
+        <button class="button" style="float:left;margin-left: 1em" onclick="makeFavourite('a')">favourite</button>
         <br><br><br><br>
+
         <label for="subj" class="input-label">Question</label><br>
         <label for="subbj" class="input-label" style="color:yellow;">What is Software Engineering?</label><br><br>
         <label for="quest" class="input-label">Answers</label><br>
         <label for="quest" style="color:yellow" class="input-label">I think I don't know but I have an idea</label><br><br>
         <button class="button" style="float:left" onclick="window.location.href='answer.html'">Answer</button>
         <br><br><br><br>
+
         <label for="subj" class="input-label">Question</label><br>
         <label for="subbj" class="input-label" style="color:yellow;">What is Software Engineering?</label><br><br>
         <label for="quest" class="input-label">Answers</label><br>
-        <label for="quest" style="color:yellow" class="input-label">I think I don't know but I have an idea</label><br><br>
+        <!-- <i id="b" class="fa fa-star" aria-hidden="true"></i> -->
+        <label id="b" for="quest" style="color:yellow" class="input-label" aria-hidden="true">I think I don't know but
+            I have an idea</label><br><br>
         <button class="button" style="float:left" onclick="window.location.href='answer.html'">Answer</button>
+        <button class="button" style="float:left;margin-left: 1em" onclick="makeFavourite('b')">favourite</button>
         <br><br><br><br>
+
         <label for="subj" class="input-label">Question</label><br>
         <label for="subbj" class="input-label" style="color:yellow;">What is Software Engineering?</label><br><br>
         <label for="quest" class="input-label">Answers</label><br>
         <label for="quest" style="color:yellow" class="input-label">I think I don't know but I have an idea</label><br><br>
         <button class="button" style="float:left" onclick="window.location.href='answer.html'">Answer</button>
-        <br><br><br>    
+        <br><br><br>
     </div>
     <footer>
         <p>&copy;stackoverflow-lite 2018</p>
