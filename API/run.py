@@ -32,13 +32,16 @@ def create_app(condif_name="DEVELOPMENT"):
             "error": "error",
             "message": "invalid token provided"
         }), 401
+
     @app.errorhandler
     def page_not_found(e):
         return jsonify({
-            "status":"error",
-            "message":"Resource not found"
-        }),404
+            "status": "error",
+            "message": "Resource not found"
+        }), 404
     return app
+
+
 app = create_app()
 if __name__ == "__main__":
     app.run()

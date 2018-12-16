@@ -18,7 +18,7 @@ def register_user():
                 #create a user
                 result = request.json
                 user = User(result["first_name"], result["last_name"],
-                        result["email"], result["password"])
+                            result["email"], result["password"])
                 db.users.insert(user)
                 return jsonify({
                     "data": {
@@ -34,6 +34,6 @@ def register_user():
                 }), 201
         else:
                 return jsonify({
-                        "message":"Request shold be in JSON",
-                        "status":"error"
-                }),400
+                    "message": "Request shold be in JSON",
+                    "status": "error"
+                }), 400
