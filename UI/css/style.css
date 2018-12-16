@@ -138,3 +138,6 @@ textarea{
 .hide{
     display: none;
 }
+.button-margin{
+    margin-left: 1em;
+}
