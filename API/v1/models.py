@@ -36,7 +36,7 @@ class BaseModel:
 
 
 class User(BaseModel):
-    def __init__(self, first_name, last_name, email, password, created_at=date.today(),
+    def __init__(self, first_name="", last_name="", email="", password="", created_at=date.today(),
                  updated_at=date.today(), active="False"):
         super().__init__(created_at, updated_at)
         self.first_name = first_name
@@ -50,7 +50,7 @@ class User(BaseModel):
 
 
 class Question(BaseModel):
-    def __init__(self, user, subject, question, created_at=date.today(), updated_at=date.today()):
+    def __init__(self, user="", subject="", question="", created_at=date.today(), updated_at=date.today()):
         self.user = user
         self.subject = subject
         self.question = question
@@ -62,7 +62,7 @@ class Question(BaseModel):
 
 
 class Answer(BaseModel):
-    def __init__(self, user, question, answer, thumbs_up=0, thumbs_down=0, created_at=date.today(),
+    def __init__(self, user="", question="", answer="", thumbs_up=0, thumbs_down=0, created_at=date.today(),
                  updated_at=date.today()):
         self.user = user
         self.question = question
