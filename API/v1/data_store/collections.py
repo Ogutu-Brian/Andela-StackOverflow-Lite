@@ -65,7 +65,7 @@ class UserCollection(NonPersistentCollection):
     def insert(self, item):
         """Encypt password before adding user into the collection"""
         assert isinstance(item, User)
-        #item.password = str(hashpw(item.password.encode('utf8'), gensalt()))
+        item.password = str(hashpw(item.password.encode('utf8'), gensalt()))
         #now insert item
         super().insert(item)
 
