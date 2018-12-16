@@ -55,6 +55,8 @@ class Answer(BaseModel):
         self.user = user
         self.question = question
         self.answer = answer
+        self.thumbs_up = thumbs_up
+        self.thumbs_down = thumbs_down
         super().__init__(created_at, updated_at)
 
     def __str__(self):
