@@ -9,9 +9,11 @@ function logInbtnBtnHandler() {
 function makeFavourite(ans_id) {
     document.getElementById(ans_id).className += " fa fa-star";
 }
-function downvoteAnswer(ans_id) {
-    document.getElementById(ans_id).className += " fa fa-thumbs-down";
+function downvoteAnswer(button_id) {
+    //This function will increment or decreament the number of downvotes to the db and render total result on UI
+    document.getElementById(button_id).innerHTML();
 }
-function upvoteAnswer(ans_id) {
-    document.getElementById(ans_id).className += " fa fa-thumbs-up";
+function upvoteAnswer(button_id) {
+    //This function will set the number of upvotes to db and render the html like button
+    document.getElementById(button_id).innerHTML();
 }
