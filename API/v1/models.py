@@ -10,16 +10,29 @@ class BaseModel:
 
     def __init__(self, created_at, updated_at):
         self.id = 0
-        self.created_at = self.date_formatter(created_at)
-        self.updated_at = self.date_formatter(updated_at)
+        self.created_at = created_at
+        self.updated_at = updated_at
 
-    def date_formatter(self, event_time):
-        """
-        Formats the created and updated dates
-        :params created_at,updated_at
-        :return event_time.strftime('%m/%d/%y') 
-        """
-        return event_time.strftime('%m/%d/%y')
+    # def date_formatter(self, event_time):
+    #     """
+    #     Formats the created and updated dates
+    #     :params created_at,updated_at
+    #     :return event_time.strftime('%m/%d/%y')
+    #     """
+    #     return event_time.strftime('%m/%d/%y')
+    def to_json_object(self, exclude=True):
+        fields = self.exclude_fields()
+        if not exclude:
+            fields = []
+        return json.loads(json.dumps(self, default=lambda o: o.strftime('%m/%d/%y') if isinstance(o, date)
+                                     else {key: value for key, value in o.__dict__.items() if
+                                           key not in fields}, sort_keys=True, indent=4))
+
+    def to_json_str(self, exclude=True):
+        return json.dumps(self.to_json_object(exclude))
+
+    def exclude_fields(self):
+        return ['created_at', 'updated_at']
 
 
 class User(BaseModel):
