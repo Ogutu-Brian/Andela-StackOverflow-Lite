@@ -1,6 +1,6 @@
-from models import BaseModel, User
+from v1.models import BaseModel, User
 from datetime import date
-from passlib.handlers.bcrypt import bcrypt
+from bcrypt import hashpw, gensalt
 import re
 """The data structure for storing non persistent data in models"""
 
@@ -45,7 +45,7 @@ class NonPersistentCollection:
     def query_by_field(self, field, value):
         """Query an item by a specific field"""
         for item in self.data.values():
-            if item[field] == value:
+            if item. to_json_object()[field] == value:
                 return item
 
     def delete(self, item_id):
@@ -65,7 +65,7 @@ class UserCollection(NonPersistentCollection):
     def insert(self, item):
         """Encypt password before adding user into the collection"""
         assert isinstance(item, User)
-        item.password = bcrypt(item.password)
+        item.password = str(hashpw(item.password.encode('utf8'), gensalt()))
         #now insert item
         super().insert(item)
 
