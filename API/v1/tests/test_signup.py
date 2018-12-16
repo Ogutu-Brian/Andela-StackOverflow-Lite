@@ -14,13 +14,13 @@ class SignUptest(BaseTestCase):
 
     def test_user_can_sign_up(self):
         result = self.client().post(self.full_endpoint(
-            '/users/signup'), headers=self.no_json_headers)
+            'users/signup'), headers=self.no_json_headers)
         self.assertEqual(result.status_code, 400)
 
         json_result = json.loads(result.get_data(as_text=True))
         self.assertEqual(json_result, ["message", "Request shold be in JSON"])
 
-        result = self.client().post(self.full_endpoint('/users/signup'), data=self.user.to_json_str(False),
+        result = self.client().post(self.full_endpoint('users/signup'), data=self.user.to_json_str(False),
                                     headers=self.headers)
         json_result = json.loads(result.get_data(as_text=True))
         self.assertEqual(result.status_code, 201)
@@ -28,7 +28,7 @@ class SignUptest(BaseTestCase):
 
     def test_user_cannot_sign_up_with_invalid_details(self):
         self.user.email = ""
-        result = self.client().post(self.full_endpoint('/users/signup'), data=self.user.to_json_str(False),
+        result = self.client().post(self.full_endpoint('users/signup'), data=self.user.to_json_str(False),
                                     headers=self.headers)
         json_result = json.loads(result.get_data(as_text=True))
         self.assertEqual(result.status_code, 400)

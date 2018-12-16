@@ -6,7 +6,7 @@ import json
 
 
 class BaseTestCase(unittest.TestCase):
-    api_prefix = "/api/v1"
+    url_prefix = "/api/v1"
 
     def setUp(self):
         self.app = create_app("TESTING")
@@ -15,7 +15,7 @@ class BaseTestCase(unittest.TestCase):
         self.no_json_headers = {}
 
     def full_endpoint(self, path=""):
-        return self.api_prefix + path
+        return self.url_prefix + path
 
     def tearDown(self):
         clear()
@@ -32,7 +32,7 @@ class AutheticatedTestCase(BaseTestCase):
         self.user.password = "password"
 
         self.client().post(
-            self.full_endpoint('/users/signup'),
+            self.full_endpoint('users/signup'),
             data=self.user.to_json_str(False),
             headers=self.headers
         )
