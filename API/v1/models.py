@@ -30,7 +30,6 @@ class User(BaseModel):
         self.last_name = last_name
         self.email = email
         self.password = password
-        self.active = self.active
 
     def __str__(self):
         """What gets printed when someone views the user object"""

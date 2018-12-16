@@ -1,4 +1,4 @@
-from models import BaseModel, User
+from v1.models import BaseModel, User
 from datetime import date
 from passlib.handlers.bcrypt import bcrypt
 import re
@@ -65,7 +65,7 @@ class UserCollection(NonPersistentCollection):
     def insert(self, item):
         """Encypt password before adding user into the collection"""
         assert isinstance(item, User)
-        item.password = bcrypt(item.password)
+        #item.password = bcrypt(item.password)
         #now insert item
         super().insert(item)
 

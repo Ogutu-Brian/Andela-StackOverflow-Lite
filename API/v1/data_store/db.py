@@ -8,6 +8,7 @@ class StackOverflowLiteDB:
         self.users = UserCollection()
         self.answers = AnswerCollection()
         self.questions = QuestionCollection()
+        self.blacklist = set()
 
     def clear(self):
         """Clear all data in the collections"""
