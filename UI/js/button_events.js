@@ -9,3 +9,9 @@ function logInbtnBtnHandler() {
 function makeFavourite(ans_id) {
     document.getElementById(ans_id).className += " fa fa-star";
 }
+function downvoteAnswer(ans_id) {
+    document.getElementById(ans_id).className += " fa fa-thumbs-down";
+}
+function upvoteAnswer(ans_id) {
+    document.getElementById(ans_id).className += " fa fa-thumbs-up";
+}
