@@ -40,3 +40,12 @@ def post_question():
             "message": "Request should be in JSON",
             "status": "error"
         }), 400
+
+
+@question_routes.route('/questions', methods=["GET"])
+def get_questions():
+    database = db.questions.query_all()
+    result = []
+    for data in database.values():
+        result.append(data.to_json_object())
+    return jsonify(result), 200

@@ -2,6 +2,7 @@ import json
 import datetime
 from flask import jsonify
 from datetime import date
+import uuid
 """The modes will be used to store the data in a data structure"""
 
 
@@ -9,7 +10,8 @@ class BaseModel:
     """Contains common functionalities across models"""
 
     def __init__(self, created_at, updated_at):
-        self.id = 0
+        # self.id = 0
+        self.id = str(uuid.uuid4())
         self.created_at = created_at
         self.updated_at = updated_at
 
