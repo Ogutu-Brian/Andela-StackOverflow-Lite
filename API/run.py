@@ -14,7 +14,7 @@ def create_app(config_name="DEVELOPMENT"):
     app.config.from_object(config[config_name])
     
     v1.initialize_app(app)
-    app.register_blueprint(user_routes, url_prefix="/api/v1/users")
+    app.register_blueprint(user_routes, url_prefix="/api/v1/auth")
     app.register_blueprint(question_routes,url_prefix="/api/v1")
 
     jwt = JWTManager(app)
