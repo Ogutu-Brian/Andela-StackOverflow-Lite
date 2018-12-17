@@ -1,6 +1,6 @@
 from v1.models import BaseModel, User
 from datetime import date
-from bcrypt import hashpw, gensalt
+from passlib.handlers.bcrypt import bcrypt
 import re
 """The data structure for storing non persistent data in models"""
 
@@ -65,7 +65,7 @@ class UserCollection(NonPersistentCollection):
     def insert(self, item):
         """Encypt password before adding user into the collection"""
         assert isinstance(item, User)
-        item.password = str(hashpw(item.password.encode('utf8'), gensalt()))
+        item.password = bcrypt.encrypt(item.password)
         #now insert item
         super().insert(item)
 
