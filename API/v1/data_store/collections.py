@@ -45,7 +45,7 @@ class NonPersistentCollection:
     def query_by_field(self, field, value):
         """Query an item by a specific field"""
         for item in self.data.values():
-            if item. to_json_object()[field] == value:
+            if item.to_json_object()[field] == value:
                 return item
 
     def delete(self, item_id):
