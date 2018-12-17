@@ -3,10 +3,16 @@ import v1
 from v1 import user_routes
 from flask import (Flask, jsonify)
 from flask_jwt_extended import JWTManager
+from dotenv import load_dotenv
+from config import config
+
+load_dotenv()
 
 
-def create_app(condif_name="DEVELOPMENT"):
+def create_app(config_name="DEVELOPMENT"):
     app = Flask(__name__, instance_relative_config=True)
+    app.config.from_object(config[config_name])
+    
     v1.initialize_app(app)
     app.register_blueprint(user_routes, url_prefix="/api/v1/users")
 
