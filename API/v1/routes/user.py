@@ -31,7 +31,7 @@ def register_user():
                     "password": user.password,
                     "created_at": user.created_at,
                     "updated_at": user.updated_at
-                }
+                },
                 "status": "success"
             }
         }), 201

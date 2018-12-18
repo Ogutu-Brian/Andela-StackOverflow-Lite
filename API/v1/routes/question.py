@@ -83,7 +83,7 @@ def delete_question(question_id):
         initial_length = len(db.questions.data)
         db.questions.data = {key: value for key, value in db.questions.data.items(
         ) if value.to_json_object()["id"] != question_id}
-        if initial_length == len(len(db.questions.data)):
+        if initial_length == len(db.questions.data):
             return jsonify({
                 "message": "the question was not deleted",
                 "status": "error"
