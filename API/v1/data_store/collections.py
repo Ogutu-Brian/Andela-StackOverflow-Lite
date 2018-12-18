@@ -48,9 +48,9 @@ class NonPersistentCollection:
             if item.to_json_object()[field] == value:
                 return item
 
-    def delete(self, item_id):
+    def delete(self, item_index):
         """Delete an item from the collection"""
-        del self.data[item_id]
+        del self.data[item_index]
 
     def is_valid(self, item):
         """Overried this method to check if an item is valid or not"""

@@ -52,7 +52,10 @@ def get_questions():
     result = []
     for data in database.values():
         result.append(data.to_json_object())
-    return jsonify(result), 200
+    return jsonify({
+        "data": result,
+        "status": "success"
+    }), 200
 
 
 @question_routes.route('/questions/<question_id>', methods=["GET"])
@@ -65,3 +68,27 @@ def get_question(question_id):
         "status": "error"
     }
     return jsonify(response), 400
+
+
+@question_routes.route('/questions/<question_id>', methods=["DELETE"])
+def delete_question(question_id):
+    """Uses dictionary comprehension to remove an item with a given id"""
+    question = db.questions.query_by_field("id", question_id)
+    if not question:
+        return jsonify({
+            "message": "A question with that id does not exist",
+            "status": "error"
+        }), 400
+    else:
+        initial_length = len(db.questions.data)
+        db.questions.data = {key: value for key, value in db.questions.data.items(
+        ) if value.to_json_object()["id"] != question_id}
+        if initial_length == len(len(db.questions.data)):
+            return jsonify({
+                "message": "the question was not deleted",
+                "status": "error"
+            }), 400
+        return jsonify({
+            "data": question.to_json_object(),
+            "status": "success"
+        }), 200

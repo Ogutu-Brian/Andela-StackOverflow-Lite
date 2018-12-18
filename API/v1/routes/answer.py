@@ -36,10 +36,13 @@ def answer_question(question_id):
             user=user, question=question, answer=result["answer"])
         db.answers.insert(answer)
         return jsonify({
-            "id": answer.id,
-            "question": answer.question.question,
-            "anwer": answer.answer,
-            "user": answer.user.first_name + " "+answer.user.last_name
+            "data": {
+                "id": answer.id,
+                "question": answer.question.question,
+                "anwer": answer.answer,
+                "user": answer.user.first_name + " "+answer.user.last_name
+            },
+            "status":"success"
         }), 201
     else:
         return jsonify({
