@@ -13,7 +13,7 @@ def post_question():
                 "data": errors,
                 "status": "error"
             }), 400
-        #create question
+        # create question
         result = request.json
         question = Question(
             user=result["user"], subject=result["subject"], question=result["question"])
@@ -22,12 +22,12 @@ def post_question():
             "email", question.to_json_object()["user"])
         if not user:
             return jsonify({
-                "message":"User with that emmail address does not exist",
-                "status":"error"
-            }),400
+                "message": "User with that emmail address does not exist",
+                "status": "error"
+            }), 400
         return jsonify({
             "data": {
-                "id": db.questions.index,
+                "id": question.id,
                 "user": user.first_name,
                 "subject": question.question,
                 "question": question.question,
@@ -49,3 +49,14 @@ def get_questions():
     for data in database.values():
         result.append(data.to_json_object())
     return jsonify(result), 200
+
+
+@question_routes.route('/questions/<question_id>', methods=["GET"])
+def get_question(question_id):
+    question = db.questions.query_by_field("id", question_id)
+    if question:
+        return jsonify(question.to_json_object())
+    response = {
+        "message": "There is not question with that id"
+    }
+    return jsonify(response), 400
