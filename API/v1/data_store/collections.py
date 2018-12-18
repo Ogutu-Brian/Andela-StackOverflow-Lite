@@ -108,7 +108,8 @@ class AnswerCollection(NonPersistentCollection):
         errors = {}
         if not item.get("user"):
             errors["user"] = "User must be provided"
-        if not item.get("question"):
-            errors["question"] = "question being answered must be provided"
+        # if not item.get("question"):
+        #     errors["question"] = "question being answered must be provided"
         if not item.get("ansewer"):
             errors["answer"] = "Answer must be provided"
+        return len(errors) == 0, errors

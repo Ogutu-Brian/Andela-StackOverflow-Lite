@@ -15,11 +15,15 @@ def post_question():
             }), 400
         # create question
         result = request.json
+        user = db.users.query_by_field("email", result["user"])
+        if not user:
+            return jsonify({
+                "message": "There is no user bearing an email {}".format(result["user"]),
+                "status": "error"
+            }), 400
         question = Question(
-            user=result["user"], subject=result["subject"], question=result["question"])
+            user=user, subject=result["subject"], question=result["question"])
         db.questions.insert(question)
-        user = db.users.query_by_field(
-            "email", question.to_json_object()["user"])
         if not user:
             return jsonify({
                 "message": "User with that emmail address does not exist",
@@ -28,7 +32,7 @@ def post_question():
         return jsonify({
             "data": {
                 "id": question.id,
-                "user": user.first_name,
+                "user": question.user.first_name + " " + question.user.last_name,
                 "subject": question.question,
                 "question": question.question,
                 "created_at": question.created_at,
@@ -57,6 +61,7 @@ def get_question(question_id):
     if question:
         return jsonify(question.to_json_object())
     response = {
-        "message": "There is not question with that id"
+        "message": "ivalid question id",
+        "status": "error"
     }
     return jsonify(response), 400
