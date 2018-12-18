@@ -1,13 +1,12 @@
 from flask import (Blueprint, jsonify, request)
 from v1.models import Answer
 from v1.routes import db
-
 answer_routes = Blueprint("routes.anwer", __name__)
 
 
 @answer_routes.route('/questions/<question_id>/answers', methods=["POST"])
 def answer_question(question_id):
-    question = db.questions.query_by_field("id")
+    question = db.questions.query_by_field("id",question_id)
     if not question:
         return jsonify({
             "message": "invalid question id",
@@ -22,7 +21,7 @@ def answer_question(question_id):
             }), 400
         result = request.json
         question = db.questions.query_by_field("id", question_id)
-        user = db.questions.query_by_field("email", result["user"])
+        user = db.users.query_by_field("email", result["user"])
         if not question:
             return jsonify({
                 "message": "question id must be valid",
@@ -41,7 +40,7 @@ def answer_question(question_id):
             "question": answer.question.question,
             "anwer": answer.answer,
             "user": answer.user.first_name + " "+answer.user.last_name
-        }),201
+        }), 201
     else:
         return jsonify({
             "message": "Request should be in JSON",

@@ -1,6 +1,6 @@
 """Initializes and runs the StackOverflowLite Application"""
 import v1
-from v1 import user_routes,question_routes
+from v1 import user_routes, question_routes, answer_routes
 from flask import (Flask, jsonify)
 from flask_jwt_extended import JWTManager
 from dotenv import load_dotenv
@@ -12,10 +12,11 @@ load_dotenv()
 def create_app(config_name="DEVELOPMENT"):
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_object(config[config_name])
-    
+
     v1.initialize_app(app)
     app.register_blueprint(user_routes, url_prefix="/api/v1/auth")
-    app.register_blueprint(question_routes,url_prefix="/api/v1")
+    app.register_blueprint(question_routes, url_prefix="/api/v1")
+    app.register_blueprint(answer_routes, url_prefix="/api/v1")
 
     jwt = JWTManager(app)
 
