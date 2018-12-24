@@ -92,3 +92,23 @@ def delete_question(question_id):
             "data": question.to_json_object(),
             "status": "success"
         }), 200
+
+
+@question_routes.route('/questions/<questionId>/answers/<answerId>',methods=['PUT'])
+def update_accept_answer(questionId, answerId):
+    if request.is_json:
+        data = request.json
+        question = db.questions.query_by_field(id,questionId)
+        answer = db.questions.query_by_field(id,questionId)
+        if answer not in question.answers:
+            return jsonify({
+                "message":"The answer is not associated with the question",
+                "status":"error"
+            }),400
+        else:
+            pass
+    else:
+        return jsonify({
+            "message":"Request should be in JSON",
+            "status":"error"
+        }), 400

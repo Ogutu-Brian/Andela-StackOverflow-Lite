@@ -56,6 +56,7 @@ class Question(BaseModel):
         self.user = user
         self.subject = subject
         self.question = question
+        self.answers = []
         super().__init__(created_at, updated_at)
 
     def __str__(self):
